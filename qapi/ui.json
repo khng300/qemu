@@ -1062,6 +1062,17 @@
 { 'struct'  : 'DisplayEGLHeadless',
   'data'    : { '*rendernode' : 'str' } }
 
+##
+# @DisplayEGLHeadless2:
+#
+# EGL headless display options.
+#
+# @index: Which device index should be used.
+#
+##
+{ 'struct'  : 'DisplayEGLHeadless2',
+  'data'    : { '*index' : 'int' } }
+
  ##
  # @DisplayGLMode:
  #
@@ -1113,6 +1124,10 @@
 #                DRI device. Graphical display need to be paired with
 #                VNC or Spice. (Since 3.1)
 #
+# @egl-headless2: No user interface, offload GL operations to a local
+#                DRI device. Graphical display need to be paired with
+#                VNC or Spice. (Second version)
+#
 # @curses: Display video output via curses.  For graphics device
 #          models which support a text mode, QEMU can display this
 #          output using a curses/ncurses interface. Nothing is
@@ -1132,7 +1147,7 @@
 ##
 { 'enum'    : 'DisplayType',
   'data'    : [ 'default', 'none', 'gtk', 'sdl',
-                'egl-headless', 'curses', 'cocoa',
+                'egl-headless', 'egl-headless2', 'curses', 'cocoa',
                 'spice-app'] }
 
 ##
@@ -1156,7 +1171,8 @@
   'discriminator' : 'type',
   'data'    : { 'gtk'            : 'DisplayGTK',
                 'curses'         : 'DisplayCurses',
-                'egl-headless'   : 'DisplayEGLHeadless'} }
+                'egl-headless'   : 'DisplayEGLHeadless',
+                'egl-headless2'  : 'DisplayEGLHeadless2'} }
 
 ##
 # @query-display-options:

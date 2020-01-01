@@ -1491,6 +1491,8 @@ DEF("display", HAS_ARG, QEMU_OPTION_display,
     "-display none\n"
     "-display egl-headless[,rendernode=<file>]"
     "                select display type\n"
+    "-display egl-headless2[,index=<index>]"
+    "                select display type\n"
     "The default display is equivalent to\n"
 #if defined(CONFIG_GTK)
             "\t\"-display gtk\"\n"
